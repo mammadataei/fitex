@@ -1,69 +1,127 @@
-# React + TypeScript + Vite
+# Fitex Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern campaign management and analytics platform built with React, TypeScript, and Vite. This application provides a comprehensive dashboard for managing marketing campaigns and visualizing their performance data.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📊 **Analytics Dashboard**: View campaign performance with interactive charts
+- 🎯 **Campaign Management**: Create and manage marketing campaigns
+- 📈 **Data Visualization**: Beautiful charts using Recharts library
+- 💾 **Local Storage**: Persistent data storage in browser
+- 🎨 **Modern UI**: Built with shadcn/ui and Tailwind CSS
+- ⚡ **Fast Development**: Vite with Hot Module Replacement
+- 🧪 **End-to-End Testing**: Playwright test suite
+- 🔍 **Type Safety**: Full TypeScript support with Zod validation
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend Framework**: React 19 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS 4.1
+- **UI Components**: shadcn/ui with Radix UI primitives
+- **Charts**: Recharts
+- **State Management**: TanStack React Query
+- **Form Validation**: Zod
+- **Testing**: Playwright
+- **Package Manager**: pnpm
+- **Code Quality**: ESLint + Prettier
 
-```js
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+## Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```
+src/
+├── api/                    # API layer and data fetching
+│   ├── hooks/             # React Query hooks
+│   ├── services/          # Data services (localStorage)
+│   ├── index.ts          # API exports
+│   ├── queryClient.ts    # React Query configuration
+│   └── QueryProvider.tsx # Query provider component
+├── components/            # React components
+│   ├── campaign/         # Campaign-related components
+│   ├── overview/         # Dashboard overview components
+│   ├── ui/              # Reusable UI components (shadcn/ui)
+│   └── error-boundary.tsx
+├── hooks/                # Custom React hooks
+├── lib/                  # Utility functions and validation
+├── types/               # TypeScript type definitions
+└── assets/             # Static assets
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+### Prerequisites
 
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+- Node.js (v18 or higher)
+- pnpm (recommended) or npm
+
+### Installation
+
+1. Clone the repository.
+2. Install dependencies:
+
+```bash
+pnpm install
 ```
+
+3. Start the development server:
+
+```bash
+pnpm dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Available Scripts
+
+- `pnpm dev` - Start development server with hot reload
+- `pnpm build` - Build the application for production
+- `pnpm preview` - Preview the production build locally
+- `pnpm lint` - Run ESLint for code linting
+- `pnpm format` - Format code with Prettier
+
+## Development Guidelines
+
+### Code Style
+
+- Use TypeScript for all new code
+- Follow the existing ESLint and Prettier configuration
+- Use functional components with hooks
+- Implement proper error boundaries
+
+### Component Creation
+
+- Place components in appropriate directories (`components/`)
+- Use TypeScript interfaces for props
+- Include JSDoc comments for complex logic
+- Follow the existing naming conventions
+
+### Adding New Features
+
+1. Define TypeScript types in `src/types/`
+2. Create API hooks in `src/api/hooks/`
+3. Build components in `src/components/`
+4. Add tests in `tests/`
+5. Update this documentation
+
+## Browser Support
+
+The application supports modern browsers with ES2020+ features:
+
+- Chrome 88+
+- Firefox 88+
+- Safari 14+
+- Edge 88+
+
+## Contributing
+
+1. Create a feature branch
+2. Make your changes
+3. Run tests and linting
+4. Submit a pull request
+
+## Performance Considerations
+
+- Lazy loading with React Suspense
+- React Query for efficient data caching
+- Vite for fast development and optimized builds
+- Chart data memoization to prevent unnecessary re-renders

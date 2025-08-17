@@ -16,12 +16,10 @@ export default function CreateCampaign() {
 
   const handleNameChange = (value: string) => {
     setCampaignName(value);
-    clearError();
-  };
-
-  const handleNameBlur = () => {
-    if (campaignName.trim()) {
-      validate(campaignName);
+    if (value.trim()) {
+      validate(value);
+    } else {
+      clearError();
     }
   };
 
@@ -70,7 +68,6 @@ export default function CreateCampaign() {
               type="text"
               value={campaignName}
               onChange={(e) => handleNameChange(e.target.value)}
-              onBlur={handleNameBlur}
               placeholder="Enter a unique campaign name"
               className={error ? "border-red-500" : ""}
               maxLength={50}

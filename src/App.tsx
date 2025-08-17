@@ -1,8 +1,8 @@
-import Campaigns from "@/components/Campaigns";
-import CreateCampaign from "@/components/CreateCampaign";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
-import { Overview } from "@/components/Overview";
-import { OverviewSkeleton } from "@/components/OverviewSkeleton";
+import Campaigns from "@/components/campaign/campaigns";
+import CreateCampaign from "@/components/campaign/create-campaign";
+import { ErrorBoundary } from "@/components/error-boundary";
+import { Overview } from "@/components/overview/overview";
+import { OverviewSkeleton } from "@/components/overview/overview-skeleton";
 import { Suspense } from "react";
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
         </div>
 
         <div className="space-y-8">
-          {/* Overview Section */}
           <section>
             <ErrorBoundary>
               <Suspense fallback={<OverviewSkeleton />}>
@@ -24,12 +23,10 @@ function App() {
             </ErrorBoundary>
           </section>
 
-          {/* Create Campaign Section */}
           <section>
             <CreateCampaign />
           </section>
 
-          {/* Campaigns Section */}
           <section>
             <ErrorBoundary>
               <Campaigns />

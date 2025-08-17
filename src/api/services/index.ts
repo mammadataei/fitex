@@ -1,4 +1,8 @@
-import { generateUUID } from "@/lib/uuid";
+/**
+ * I would normally use a code generator tool like kubb or Orval,
+ * to generate the API related utilities using an OpenAPI specification.
+ */
+import { generateUUID } from "@/lib/utils";
 import type { Campaign, OverviewData } from "@/types";
 import { campaignStorage } from "./campaignStorage";
 

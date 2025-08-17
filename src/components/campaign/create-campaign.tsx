@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useCampaignValidation } from "@/hooks/useCampaignValidation";
-import { generateRandomInstallData } from "@/lib/campaign-utils";
+import { generateRandomInstallData } from "@/lib/utils";
 import type { Campaign } from "@/types";
 import { useState } from "react";
 

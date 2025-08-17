@@ -1,3 +1,7 @@
+/**
+ * I would normally use a code generator tool like kubb or Orval,
+ * to generate this hooks using an OpenAPI specification.
+ */
 import type { Campaign } from "@/types";
 import { useMutation, useQuery, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import { campaignService, overviewService } from "../services";

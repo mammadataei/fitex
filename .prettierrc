@@ -1,0 +1,11 @@
+{
+  "semi": true,
+  "singleQuote": false,
+  "singleAttributePerLine": false,
+  "htmlWhitespaceSensitivity": "css",
+  "printWidth": 120,
+  "arrowParens": "always",
+  "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
+  "tailwindFunctions": ["clsx", "cn"],
+  "tabWidth": 2
+}

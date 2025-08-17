@@ -1,6 +1,6 @@
 // Query client and provider
-export { QueryProvider } from "./QueryProvider";
 export { queryClient } from "./queryClient.ts";
+export { QueryProvider } from "./QueryProvider";
 
 // Hooks
 export * from "./hooks";

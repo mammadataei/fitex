@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  lint-build-format:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check code formatting
+        run: |
+          pnpm format
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Code is not properly formatted. Please run 'pnpm format' and commit the changes."
+            git diff
+            exit 1
+          fi
+
+      - name: Run ESLint
+        run: pnpm lint
+
+      - name: Run Prettier
+        run: pnpm prettier . --check
+
+      - name: Type check and build
+        run: pnpm build
